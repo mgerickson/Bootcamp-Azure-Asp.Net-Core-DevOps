@@ -6,11 +6,11 @@ Explore the database created by the application. Learn how to connect, explore a
 
 ## Use Azure Portal to create Azure SQL Database 
 
-In the Azure portal, click on new and search for "sql database"..
+In the Azure portal, click on new and search for "sql database".
 
 ![img1][img1]
 
-Create a Azure SQL Database. In the form, make sure to select the same Resource Group with your Web Application. The name of database must be 'BootCampDB'
+Create an Azure SQL Database. In the form, make sure to select the same Resource Group as you used for your Web Application. The name of database must be 'BootCampDB'
 
 ![img2][img2]
 
@@ -20,11 +20,11 @@ Create a new Database Server in the Server section. The server name must be uniq
 
 ### Set server firewall
 
-Before to connect your application to your new Azure SQL Database, you must first set a Firewall.
+Before you connect your application to your new Azure SQL Database, you must first set a Firewall.
 
-Microsoft Azure SQL Database provides a relational database service for Azure and other Internet-based applications. To help protect your data, firewalls prevent all access to your database server until you specify which computers have permission. The firewall grants access to databases based on the originating IP address of each request.
+Microsoft Azure SQL Database provides a relational database service for Azure and other Internet-based applications. To help protect your data, firewalls prevent all access to your database server until you specify which IP addresses have permission. The firewall grants access to databases based on the originating IP address of each request.
 
-For setting the firewall, click on 'SQL Databases', select your database in the list. Click on 'Set server firewal'
+To configure the firewall, click on 'SQL Databases' and select your database from the list. Click on 'Set server firewall'.
 
 ![img4][img4]
 
@@ -46,15 +46,15 @@ Copy the connectionstring.
 
 Fire up Visual Studio. Click `File -> Open  -> Project/Solution` and navigate to the supplied solution in Step 2.
 
-Edit appsettings.json and add new parameter with the name 'AzureDBConnectionStrings' and paste your Azure connectionstring :
+Edit the appsettings.json file and add a new parameter with the name 'AzureDBConnectionStrings'. Paste the connection string you copied from the Azure Portal as the value :
 
 ```json
    "AzureDBConnectionStrings": "Server=tcp:bootcampdb.database.windows.net,1433;Initial Catalog=BootcampDB;Persist Security Info=False;User ID={your_username};Password={your_password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"
 ```
 
-You must replace '{your_username}' with username of your Azure SQL Database and '{your_password}' with password of your Database.
+Replace '{your_username}' with username of your Azure SQL Database and '{your_password}' with password of your Database.
 
-The complet code of appsettings.json file should look like :
+The complete code of appsettings.json file should look like :
 
 ```json
 
@@ -72,7 +72,7 @@ The complet code of appsettings.json file should look like :
 }
 ```
 
-Edit the Startup.cs file. Change the name of the connectionString parameter to get Azure SQL Database ConnectionString.
+Edit the Startup.cs file. Change the name of the connectionString parameter to get the Azure SQL Database ConnectionString.
 
 ```cs
 Configuration.GetConnectionString("AzureDBConnectionStrings")
@@ -82,25 +82,25 @@ Configuration.GetConnectionString("AzureDBConnectionStrings")
 
 You can use Entity Framework Core Migrations to create 'RunnerPerformances' and 'Statistics' tables in your Azure SQL Database.
 
-To do it, open 'Package Manager Console' (Click `Tools -> Nuget Package Manager  -> Package Manager Console`) and execute the following command.
+To do this open the 'Package Manager Console' (Click `Tools -> Nuget Package Manager  -> Package Manager Console`) and execute the following command.
 
 Update-Database
 
 ### Test your application locally
 
-Hit F5 for run your application and test your access to Azure SQL Database.
+Hit F5 to run your application and test your access to Azure SQL Database.
 
 ### Deploy your application
 
-Right-click on the web project and click on `Publish`. Select 'Microsoft Azure App Service', click on 'Select Existing'. After that click on 'Publish'.
+Right-click on the web project and click on `Publish`. Select 'Microsoft Azure App Service' and click on 'Select Existing'. After that click on 'Publish'.
 
 ![img8][img8]
 
-In the next window, select your Subscription and your Azure App Service.
+In the next window select your Subscription and your Azure App Service.
 
 ![img9][img9]
 
-Click Ok and wait a few minutes for the deploy to complete. We can keep an eye on the Output window to check the status. When the deployment is complete, our browser should open a new tab and display our cloud-powered website!
+Click Ok and wait for a few minutes allowing the deployment to complete. You can watch the Output window to check the status. When the deployment is complete yur browser should open a new tab and display your cloud-powered website!
 
 ### Query Editor
 

@@ -1,5 +1,5 @@
 # Goal
-For this part of the bootcamp, our attendees will create a shiny new website in Visual Studio. We'll add a form to capture a message submitted by the user. Finally, they'll deploy to Azure App Service so the entire world can marvel at their amazing websites!
+In this step we will create a shiny new website in Visual Studio. We'll add a form to capture a message submitted by the user. Finally, we'll deploy the website to the Azure App Service so the entire world can marvel at our amazing website!
 
 # Reference
 
@@ -69,7 +69,7 @@ Select 'MVC Controller - Empty'.
 
 ![img11][img12]
 
-In the next window give name "RunnerPerformancesController".
+In the next window set the name to "RunnerPerformancesController".
 
 Select all the lines of code in this file, and replace with :
 
@@ -118,13 +118,13 @@ The only edit we need to make is to remove the `ActionLink` for Edit, Details an
 
 ### The Layout
 
-In file `/Views/Shared/_Layout.cshtml`, under this line of code : 
+Open the file `/Views/Shared/_Layout.cshtml`. Find this line of code:
 
 ```html
 <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
 ```
 
-add link to RunnerPerformances section :
+Under the line of code enter the following to add a link to the RunnerPerformances section :
 
 ```html
 <li><a asp-area="" asp-controller="RunnerPerformances" asp-action="Index">RunnerPerformances</a></li>
@@ -132,7 +132,7 @@ add link to RunnerPerformances section :
 
 ### Build and Run!
 
-Hit F5 and PROFIT!!!
+Hit F5 to build and execute the website.
 
 ## Deploying to Azure
 
@@ -140,7 +140,7 @@ There's no point in building a glorious form like this unless you can show it of
 
 ### Visual Studio Publish
 
-The easiest way to deploy is by having Visual Studio publish it for you. During the course of the publish, you'll be asked for your credentials, and you'll have to fill in some additional deployment details.
+The easiest way to deploy the website is by having Visual Studio publish it for you. During the course of the publish, you'll be asked for your credentials, and you'll have to fill in some additional deployment details.
 
 Start by right-clicking on the web project and clicking `Publish`. If you haven't logged in with your Microsoft account, you'll be asked for your credentials now. Once you are logged in, you should be presented with this screen:
 
@@ -150,23 +150,23 @@ Choose your subscription, and click `New` to setup your App Service:
 
 ![img5][img5]
 
-The Web App Name field will be pre-populated with a globally unique name. Unless a Resource Group and App Service Plan have already been created under the subscription, they will need to be added now. Once all the fields have been filled in, click `Create` and our App Service will be provisioned.
+The Web App Name field will be pre-populated with a globally unique name. If you have not already created a Resource Group and App Service Plan in the subscription they will need to be added now. Once all the fields have been entered, click `Create` and your App Service will be provisioned.
 
-Once provisioning is complete, our publishing profile is complete and the Publish dialog will appear to guide us through the rest of the process:
+Once provisioning is complete and your publishing profile is complete the Publish dialog will appear to guide you through the rest of the process:
 
 ![img6][img6]
 
-At this point we should be able to click Publish, and wait a few minutes for the deploy to complete. We can keep an eye on the Output window to check the status. When the deployment is complete, our browser should open a new tab and display our cloud-powered website!
+At this point you should be able to click Publish, and wait a few minutes for the deploy to complete. You can monitor the Output window to check the status. When the deployment is complete, your browser should open a new tab and display your new cloud-powered website!
 
 ![img7][img7]
 
 ## Check out the portal
 
-Point a browser to https://portal.azure.com. Click on the Hamburger button and select `All resources` from the side menu. The new App Service should show up:
+Point a browser to https://portal.azure.com. Click on the Hamburger menu and select `All resources` from the side menu. The new App Service should show up:
 
 ![img8][img8]
 
-Clicking on the App Service will take us to a screen where you can manage and monitor your website.
+Clicking on the App Service will take you to a screen where you can manage and monitor your website.
 
 ![img9][img9]
 

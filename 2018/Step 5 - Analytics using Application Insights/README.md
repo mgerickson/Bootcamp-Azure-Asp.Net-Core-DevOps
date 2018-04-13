@@ -1,6 +1,6 @@
 # Goal
 
-Get metrics from the application and go through ways to analyze them
+Get metrics from the application and see how we can analyze them
 
 ## References
 
@@ -12,19 +12,19 @@ https://docs.microsoft.com/en-us/azure/application-insights/app-insights-analyti
 
 ## Add App Insights to the web application
 
-Right click on the web project : add -> Application Insights Telemetry...
+Right click on the web project and select "Add | Application Insights Telemetry..."
 
 ![img2][img2]
 
-Click on Start Free button
+Click on the Start Free button
 
 ![img1][img1]
 
-Notice that the file ApplicationInsights folder has been added to the project.
+Notice that an ApplicationInsights folder has been added to the project.
 
 ![img3][img3]
 
-Note in the appsettings.json file, you should find the a new section:
+Open the appsettings.json file. You should see a new section as shown below:
 
   ```json
 
@@ -33,10 +33,12 @@ Note in the appsettings.json file, you should find the a new section:
   }
 
   ```
+ 
+ Take note of the InstrumentationKey. This will be used in the next step.
 
 ## Add code to track javascript calls
 
-In file `/Views/Shared/_Layout.cshtml`, copy and paste the following javascript code immediatly befor the `</html>` tag and then copy and paste the instrumentation key.
+Open the file `/Views/Shared/_Layout.cshtml`. Copy the foillowing javascript code and paste it immediatly befor the `</html>` tag. Then copy and paste the instrumentation key.
 
 ```javascript
 
@@ -51,21 +53,21 @@ var appInsights=window.appInsights||function(config)
 
 ```
 
-Note that this code is available in the portal (App Insight -> Getting Started -> Monitor and diagnose client side application)
+This code is also available in the portal (App Insight -> Getting Started -> Monitor and diagnose client side application)
 
 ![img4][img4]
 
-Now you can view the application in your favorite web browser. Open the developper console (F12) and you will notice calls to App Insights in the network tab.  You should see requests to `https://dc.services.visualstudio.com/v2/track` which is App Insights end point to collect data.
+Now you can view the application in your favorite web browser. Open the developper console (F12) and you will notice calls to App Insights in the network tab. You should see requests to `https://dc.services.visualstudio.com/v2/track` which is the App Insights end point to collect data.
 
 At this point, you should be able to see some data in Application Insights if you login in the Portal and look at the overview section.
 
 ## Tracking Unhandled Exceptions (request failures)
 
-Now we will demonstrate how to track exceptions and how to log them ourselves (custom exception logging)
+Next you will see how to track exceptions and how to log them yourself (custom exception logging).
 
-Add a new folder in the project `Services`
-Now add a new cs file and call it `SomeService.cs`
-In this file, copy and paste the definition of a custom excection `ServiceException` and the `SomeService` class:
+Add a new folder named `Services` to the project.
+Next add a new .cs file to the folder and name it `SomeService.cs`
+Copy and paste the following code into the file you just created. This code contains the definition of a custom excection `ServiceException` and the `SomeService` class:
 
 ```cs
 
@@ -85,8 +87,8 @@ In this file, copy and paste the definition of a custom excection `ServiceExcept
 
 ```
 
-Now add an empty controller to the web applicaiton and call it `ServiceController.cs`
-In the `Index` method, add the following line of code:
+Next add an empty controller named `ServiceController.cs` to the web applicaiton.
+In the `Index` method of the controller, add the following line of code:
 
 ```cs
 
@@ -94,7 +96,7 @@ In the `Index` method, add the following line of code:
 
 ```
 
-Create the related view file  `views\service\index.cshtml` and add
+Create the related view file  `views\service\index.cshtml` and add the following code to it.
 
 ```cshtml
 
@@ -106,7 +108,7 @@ Create the related view file  `views\service\index.cshtml` and add
 
 ```
 
-now in the layout file `views\Shared\_Layout.cshtml`, after line 37, add;
+Then open the layout file `views\Shared\_Layout.cshtml`, and add the following code after line 37:
 
 ```cshtml
 
@@ -114,13 +116,13 @@ now in the layout file `views\Shared\_Layout.cshtml`, after line 37, add;
 
 ```
 
-Now run the applicaiton and click on the 'Service' link on the top. You should see and exception stack.
+Run the applicaiton and click on the 'Service' link on the top. You should see an exception stack.
 
-Back to visual studio, under the ApplicationInsights.config file, click on `Search debug session telemetry' and you should see the failed request along with the details.
+Return to Visual Studio. Under the ApplicationInsights.config file, click on `Search debug session telemetry'. You should see the failed request along with the details.
 
 ## Tracking Handled Exceptions
 
-Back to the Index method of the `ServiceController`, replace the code of the method by;
+Navigate to the Index method of the `ServiceController`. Replace the code of the method with the following:
 
 ```cs
 
@@ -145,9 +147,9 @@ using Microsoft.ApplicationInsights;
 
 ```
 
-Run the application again and click on the `Service` menu item. You should not see the exception stack at this point.
+Run the application again. Click on the `Service` menu item. You should not see the exception stack at this point.
 
-On the Azure Portal, click on Metric Explorer and then add metrics to add the exceptions. We should be able to see the details of the exceptions.
+In the Azure Portal, click on Metric Explorer and then add metrics to add the exceptions. You should be able to see the details of the exceptions.
 
 ![ExceptionMetric][ExceptionMetric]
 
@@ -163,7 +165,7 @@ First add the following line at the top of the SomeService.cs file:
 
 ```
 
-add the following method to the SomeService class:
+Add the following method to the SomeService class:
 
 ```cs
 
@@ -204,16 +206,16 @@ In the same file, add the following class:
 
 Now, change the code in the ServiceController file, Index method by replacing the call to `Services.SomeService.ThrowAnExceptionPlease();` by `Services.SomeService.SomeWorkWithDependency();`
 
-Build and run the application and click on the Service menu item. You can also change the delay in the `DoSomeWork` method (make it very low for instance), rebuild and run again (do not forget to click on the Service menu item).
+Build and run the application. Click on the Service menu item. You can also change the delay in the `DoSomeWork` method (make it very low for instance). Rebuild and run the application again. Click on the Service menu item.
 
-Go in the Portal and click on the App Insights instance then Application Map. You should be able to see the calls the newly created method.
+Go into the Portal and click on the App Insights instance then Application Map. You should be able to see the calls the newly created method.
 
 
 ## Track Event and Metrics
 
-You can track many different things other then exceptions. Let's add some metric when we create new runners entry.
+You can track many things other than exceptions. Next you will add some metrics when we create a new runners entry.
 
-First, go in the SomeService class and add the following method:
+First, open the SomeService class and add the following method:
 
 ```cs
 
@@ -227,7 +229,7 @@ First, go in the SomeService class and add the following method:
 
 ```
 
-This method will help us to track a custom Event and Metric. Now let's add the call to that method in the RunnerPerformancesController in the Create Action. After adding the call the code should look like:
+This method will help us track a custom Event and Metric. Add a call to the method in the RunnerPerformancesController in the Create Action. After adding the call the code should look like:
 
 ```cs
 
@@ -245,7 +247,7 @@ This method will help us to track a custom Event and Metric. Now let's add the c
 
 ```
 
-It's now time to test it. Deploy your application, and create a few new result.  Once your done, go back in the Azure portal, in the Application Insight blade, open a Metrics Explorer blade, add a new chart, and select Events
+Now test it the change. Deploy your application and create a few new results. Once you are done go back into the Azure portal. In the Application Insight blade, open a Metrics Explorer blade, add a new chart, and select Events
 
 ![ExceptionMetric][ExceptionMetric]
 

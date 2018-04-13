@@ -1,7 +1,7 @@
 Goal
 ======
 
-Create an Azure Function that will be executed every 5 minutes to calculate the average to the time saved in the database and saving back the result. Validate in the debug window that the text for the message is the same as written in the Website textbox.
+Create an Azure Function that will be executed every 5 minutes to calculate the average of the times saved in the database and saving the result. Validate in the debug window that the text for the message is the same as written in the Website textbox.
 
 Reference
 =========
@@ -14,14 +14,15 @@ Let's code!
 Create an Azure Function Domain
 -------------------------------
 
-From portal.azure.com, click the big green "+" in the top left corner. Search for "Function", and select **Function App**. Click the create button will open a form to specify the information related to your Function App "domainname".
+From portal.azure.com click the big green "+" in the top left corner. Search for "Function", and select **Function App**. Click the create button. This will open a form to specify the information related to your Function App "domainname".
 
 ![SearchFunctionApp][SearchFunctionApp]
 
-- App Name: That the name of the domain, where all your functions will be regrouped. This name must be unique through the web.
-- Subscription: The subscription where the Function App will be.
+Set the following values:
+- App Name: The name of the domain, where all your functions will be regrouped. This name must be unique.
+- Subscription: The subscription with which the Function App will associated.
 - Ressource Group: Select the same Ressource Group used for the previous components.
-- Hosting plan: Select Consomption Plan.
+- Hosting plan: Select Consumption Plan.
 - Location: Select the same location used for the previous components.
 - Create a new Storage Account. Give it a name like [yourname]functions
 
@@ -39,7 +40,7 @@ Create The Data processing Azure Function
 
 ![CreateDataFunction][CreateDataFunction]
 
-(Because it's our first function, the portal will do a little tour of the interface)
+(Because it's our first function, the portal will do a little overview of the interface)
 
 Configure the Function App
 --------------------------
@@ -48,7 +49,7 @@ Configure the Function App
 1. Click on the *Platform features* tab on the top of the screen.
 1. Click on Application settings under the GENERAL SETTINGS section.
 1. Scroll to the section **Connection strings** and click on *+ Add new connection string*.
-1. Set the name to something like sqlConn and the value to the connectiontring identified previously.
+1. Set the name to something like sqlConn and the value to the connectiontring used in the last exercise.
 1. Don't forget to scroll back up to click the save button.
 
 ![ShowApplicationSettings][ShowApplicationSettings]
@@ -58,9 +59,9 @@ Test the Function App
 
 Now let's calculate some statistics. Copy-Paste the code from the snippet `function_TimeTrigger_final.txt` inside your function.
 
-The `#r` command are to add references to library we need that are already available in Azure. Save your changes.
+The `#r` commands are to add references to libraries we need that are already available in Azure. Save your changes.
 
-Clear the Logs windows by clicking the Clear button, and go back save another comment in the WebApp. You should have something similar to that.
+Clear the Logs windows by clicking the Clear button, and go back save another comment in the WebApp. You should have something similar to this.
 
 ![Result][Result]
 
@@ -77,11 +78,11 @@ Then to add a new Function, right mouse click on the project node in Solution Ex
 
 Select the type of function you need...
 
-One all the code is in place hit F5 to run it locally.
+Once all the code is in place hit F5 to run it locally.
 
 ![DebugMode][DebugMode]
 
-To complete this bonus, let's change your deployment setting from `Release` to `Debug`, hit F5, place a breakpoint and enjoy your debugging session! ;)
+To complete this bonus, change your deployment setting from `Release` to `Debug`, hit F5, place a breakpoint in your code and you can begin a debugging session! ;)
 
 ## End
 

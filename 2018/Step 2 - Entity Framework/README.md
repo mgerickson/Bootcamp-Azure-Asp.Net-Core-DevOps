@@ -1,6 +1,6 @@
 # Goal
 
-For this part of the bootcamp, our attendees will create a shiny new website in Visual Studio. We'll add the forms to made CRUD operations with Entity Framework Core.
+In this step we will continue to build our new website in Visual Studio. We'll add the forms to made CRUD (Create, Read, Update and Delete) operations with Entity Framework Core.
 
 ## Reference
 
@@ -83,9 +83,9 @@ namespace WebAppAspNetCore.Models
 
 ### The ConnectionString
 
-The ConnectionString is the string with information to connect to database, like database name, username, password, provider, etc. 
+The ConnectionString is the string with information to connect to the database. This includes information like database name, username, password and provider.
 
-We will first user a LocalDB database. Edit appsettings.json and add ConnectionString, below the 'Logging' section. Here is the complet code of appsettings.json file with the connectionString.
+We will first use a LocalDB database. Edit the appsettings.json file adding a ConnectionString, below the 'Logging' section. Here is the complete code of appsettings.json file with the connectionString.
 
 ```json
 
@@ -107,14 +107,14 @@ We will first user a LocalDB database. Edit appsettings.json and add ConnectionS
 
 EF Core supports using DbContext with a dependency injection container. Your DbContext type can be added to the ASP.NET Core service container by using AddDbContext<TContext>.
 
-Edit Startup.cs file and update the ConfigureServices method. Add this line of code after services.AddMvc().
+Edit the Startup.cs file updating the 'ConfigureServices' method. Add this line of code after services.AddMvc().
 
 ```cs
 services.AddDbContext<BootCampContext>(options =>
            options.UseSqlServer(Configuration.GetConnectionString("LocalDBConnectionStrings")));
 ```
 
-Here is the complet code of 'ConfigureServices' method. 
+Here is the complete code of the 'ConfigureServices' method. 
 
 ```cs
 
@@ -128,7 +128,7 @@ Here is the complet code of 'ConfigureServices' method.
 
 ```
 
-You need to add this references. Copy and paste then at the top of Startup.cs file.
+You also need to add these references. Copy and paste it at the top of Startup.cs file.
 
 ```cs
 
@@ -139,9 +139,9 @@ using Microsoft.EntityFrameworkCore;
 
 ### Use Migrations to create and update database
 
-We are ready to access at our database with our application using Entity Framework Core. But, we haven't yet create our database with the corresponding tables. We don't need to do it manually. We can use Entity Framework Core to generate and update our database.
+We are ready to access the database with our application using Entity Framework Core. But, we haven't yet created our database with the corresponding tables. We don't need to do it manually. We can use Entity Framework Core to generate and update our database.
 
-To do it, we will use the 'Package Manager Console'. Click `Tools -> Nuget Package Manager  -> Package Manager Console` 
+To do this, we will use the 'Package Manager Console'. Click `Tools -> Nuget Package Manager  -> Package Manager Console` 
 
 ![img2][img2]
 
@@ -161,7 +161,7 @@ Select 'MVC Controller with views, using Entity Framework'
 
 ![img5][img5]
 
-In the 'Add Controller' window, fill in information.
+In the 'Add Controller' window, fill in the following information.
 
 Model Class : RunnerPerformance
 
@@ -171,13 +171,13 @@ Data context class : BootCampContext
 
 ### Build and Run!
 
-Hit F5 and PROFIT!!!
+Hit F5 and run the application.
 
 ### Explore code generated for CRUD operation
 
 Explore the code generated in the file 'Controllers/RunnerPerformancesController.cs';
 
-Explorer the views generated in the folder 'Views/RunnerPerformances'
+Explore the views generated in the folder 'Views/RunnerPerformances'
 
 ## End
 
