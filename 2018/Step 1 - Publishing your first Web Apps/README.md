@@ -5,9 +5,16 @@ In this step we will create a shiny new website in Visual Studio. We'll add a fo
 
 https://docs.microsoft.com/en-us/aspnet/core/
 
+# Clone the Github respository
+The files used today can be found in the following Github repository.
+
+https://github.com/mgerickson/Bootcamp-Azure-Asp.Net-Core-DevOps
+
+Please create a folder on your computer and clone the repository to support your work on the sample application. This will also give you the presentation files to review.
+
 # Let's code!
 ## Open website
-Fire up Visual Studio. Click `File -> Open  -> Project/Solution` and navigate to the supplied solution in Step 0.
+Fire up Visual Studio. Click `File -> Open  -> Project/Solution` and navigate to the supplied <span style="color:teal">*solution in Step 0*</span>.
 
 ![img1][img1]
 

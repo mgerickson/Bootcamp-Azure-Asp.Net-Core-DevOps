@@ -1,5 +1,5 @@
 # Goal
-FInally you will automate the creation of the resources the application requires in Azure. This is commonly referred to as Infrastructure as Code (IaC). To do this youy will be using a Visual Studio Resource Group project. You will start from an empty resource group template project in Visual Studio and add the needed resources to it.
+FInally you will automate the creation of the resources the application requires in Azure. This is commonly referred to as Infrastructure as Code (IaC). To do this you will be using a Visual Studio Resource Group project. You will start from an empty resource group template project in Visual Studio and add the needed resources to it.
 
 # Requirements
 * Azure PowerShell v3.7.0 or later. Get it [here](https://github.com/Azure/azure-powershell/releases/tag/v3.7.0-March2017).

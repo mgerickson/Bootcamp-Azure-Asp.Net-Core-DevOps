@@ -1,7 +1,7 @@
 "appName": {
   "maxLength": 7,
   "type": "string",
-  "defaultValue": "gab2017",
+  "defaultValue": "gab2018",
   "metadata": {
     "description": "The base name of the solution. Up to 7 characters."
   }

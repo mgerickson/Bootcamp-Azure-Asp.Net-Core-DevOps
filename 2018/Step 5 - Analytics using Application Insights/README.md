@@ -38,7 +38,7 @@ Open the appsettings.json file. You should see a new section as shown below:
 
 ## Add code to track javascript calls
 
-Open the file `/Views/Shared/_Layout.cshtml`. Copy the foillowing javascript code and paste it immediatly befor the `</html>` tag. Then copy and paste the instrumentation key.
+Open the file `/Views/Shared/_Layout.cshtml`. Copy the following javascript code and paste it immediatly before the `</html>` tag. Then copy and paste the instrumentation key.
 
 ```javascript
 
@@ -67,7 +67,7 @@ Next you will see how to track exceptions and how to log them yourself (custom e
 
 Add a new folder named `Services` to the project.
 Next add a new .cs file to the folder and name it `SomeService.cs`
-Copy and paste the following code into the file you just created. This code contains the definition of a custom excection `ServiceException` and the `SomeService` class:
+Copy and paste the following code into the file you just created. This code contains the definition of a custom exception `ServiceException` and the `SomeService` class:
 
 ```cs
 
@@ -87,7 +87,7 @@ Copy and paste the following code into the file you just created. This code cont
 
 ```
 
-Next add an empty controller named `ServiceController.cs` to the web applicaiton.
+Next add an empty controller named `ServiceController.cs` to the web application.
 In the `Index` method of the controller, add the following line of code:
 
 ```cs
@@ -117,8 +117,6 @@ Then open the layout file `views\Shared\_Layout.cshtml`, and add the following c
 ```
 
 Run the applicaiton and click on the 'Service' link on the top. You should see an exception stack.
-
-Return to Visual Studio. Under the ApplicationInsights.config file, click on `Search debug session telemetry'. You should see the failed request along with the details.
 
 ## Tracking Handled Exceptions
 
